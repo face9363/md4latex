@@ -6,7 +6,6 @@ public class Branch{
     public Structure self;
     public Branch parent;
     public ArrayList<Branch> children;
-    // public Boolean opend = true;
 
     public Branch(Structure self, Branch parent){
         this.children = new ArrayList<>();

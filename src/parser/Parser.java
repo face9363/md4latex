@@ -46,7 +46,9 @@ public class Parser{
     private void readOneLine(String str) {
         // StringBuilder prev = new StringBuilder();
         str = this.topReader(str);
-        this.current.self.content += str;
+        if(! (str == null)){
+            this.current.appendChild(new Paragraph(str));
+        }
         // str.chars()
         //     .mapToObj(i -> (char)i)
         //     .forEach((ch) -> {
@@ -68,16 +70,16 @@ public class Parser{
         matcher = Parser.Title.matcher(str);
         if(matcher.find()){
             int len = matcher.end()-1;
-            Structure struct = new Title(len);
+            Block struct = new Title(len);
             this.current = this.current.appendChild(struct);
-            this.current.self.content += matcher.replaceFirst("");
+            this.current.appendChild(new Paragraph(matcher.replaceFirst("")));
             this.current = this.current.parent;
 
             return null;
         }
         matcher = Parser.Quote.matcher(str);
         if(matcher.find()){
-            Structure struct = new Quote();
+            Block struct = new Quote();
             this.current = this.current.appendChild(struct);
 
             return matcher.replaceFirst("") + "\n";
@@ -89,7 +91,7 @@ public class Parser{
                 return null;
             }
             int len = matcher.end()-1;
-            Structure struct = new MathMode(len);
+            Block struct = new MathMode(len);
             this.current = this.current.appendChild(struct);
             return matcher.replaceFirst("");
         }
