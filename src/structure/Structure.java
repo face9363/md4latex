@@ -1,5 +1,6 @@
 package src.structure;
 
 public abstract class Structure {
-    // public String content = "";
+    public abstract String prevDump();
+    public abstract String nextDump();
 }

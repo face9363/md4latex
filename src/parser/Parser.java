@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import src.structure.Structure;
 import src.tree.Branch;
 import java.util.stream.Stream;
 import java.nio.file.FileSystem;
@@ -40,7 +39,7 @@ public class Parser{
             e.printStackTrace();
             System.out.println("## failed to aquire stream.");
         }
-        System.out.println("############");
+        System.out.println("############"); 
     }
 
     private void readOneLine(String str) {
@@ -90,7 +89,7 @@ public class Parser{
                 this.current = this.current.parent;
                 return null;
             }
-            int len = matcher.end()-1;
+            int len = matcher.end();
             Block struct = new MathMode(len);
             this.current = this.current.appendChild(struct);
             return matcher.replaceFirst("");
@@ -99,7 +98,7 @@ public class Parser{
     }
 
     private static Pattern Title = Pattern.compile("^#{1,6}\\ ");
-    private static Pattern Math = Pattern.compile("^\\${1,3}\\ *$");
+    private static Pattern Math = Pattern.compile("^\\${1,3}");
     private static Pattern Quote = Pattern.compile("^>");
     private static Pattern Space = Pattern.compile("^\\ *$");
 }

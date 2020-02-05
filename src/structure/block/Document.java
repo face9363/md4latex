@@ -6,4 +6,14 @@ public class Document extends Block{
         
     }
 
+    @Override
+    public String prevDump(){
+        return "";
+    }
+
+    @Override
+    public String nextDump(){
+        return "";
+    }
+
 }

@@ -6,4 +6,14 @@ public class Quote extends Block{
         super();
         
     }
+
+    @Override
+    public String prevDump(){
+        return "\n\\begin{quote}\n";
+    }
+
+    @Override
+    public String nextDump(){
+        return "\n\\end{quote}\n";
+    }
 }

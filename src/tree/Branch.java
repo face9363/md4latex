@@ -18,4 +18,12 @@ public class Branch{
         this.children.add(newBranch);
         return newBranch;
     }
+
+    public void explore(StringBuilder val){
+        val.append(this.self.prevDump());
+        for(Branch child: children){
+            child.explore(val);
+        }
+        val.append(this.self.nextDump());
+    }
 }

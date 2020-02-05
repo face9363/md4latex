@@ -7,5 +7,13 @@ public class Paragraph extends Block{
         super();
         this.content = content;
     }
+    @Override
+    public String prevDump(){
+        return content;
+    }
 
+    @Override
+    public String nextDump(){
+        return "";
+    }
 }
