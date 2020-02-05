@@ -46,7 +46,7 @@ public class Parser{
         // StringBuilder prev = new StringBuilder();
         str = this.topReader(str);
         if(! (str == null)){
-            this.current.appendChild(new Paragraph(str));
+            this.current.appendChild(new Paragraph(str + "\n"));
         }
         // str.chars()
         //     .mapToObj(i -> (char)i)
@@ -81,7 +81,7 @@ public class Parser{
             Block struct = new Quote();
             this.current = this.current.appendChild(struct);
 
-            return matcher.replaceFirst("") + "\n";
+            return matcher.replaceFirst("");
         }
         matcher = Parser.Math.matcher(str);
         if(matcher.find()){
@@ -94,6 +94,16 @@ public class Parser{
             this.current = this.current.appendChild(struct);
             return matcher.replaceFirst("");
         }
+        matcher = Parser.Code.matcher(str);
+        if(matcher.find()){
+            if(this.current.self instanceof Code){
+                this.current = this.current.parent;
+                return null;
+            }
+            Block struct = new Code();
+            this.current = this.current.appendChild(struct);
+            return matcher.replaceFirst("");
+        }
         return str;
     }
 
@@ -101,4 +111,5 @@ public class Parser{
     private static Pattern Math = Pattern.compile("^\\${1,3}");
     private static Pattern Quote = Pattern.compile("^>");
     private static Pattern Space = Pattern.compile("^\\ *$");
+    private static Pattern Code = Pattern.compile("^```\\ *$");
 }
