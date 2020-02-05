@@ -8,7 +8,7 @@ public class Code extends Block{
 
     @Override
     public String prevDump(){
-        return "\n\\begin{lstlisting}\n";
+        return "\n\\begin{lstlisting}[caption=define,label=fuga7]\n";
     }
 
     @Override
