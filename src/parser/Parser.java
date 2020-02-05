@@ -40,7 +40,7 @@ public class Parser{
             e.printStackTrace();
             System.out.println("## failed to aquire stream.");
         }
-
+        System.out.println("############");
     }
 
     private void readOneLine(String str) {
@@ -70,19 +70,24 @@ public class Parser{
             int len = matcher.end()-1;
             Structure struct = new Title(len);
             this.current = this.current.appendChild(struct);
+            this.current.self.content += matcher.replaceFirst("");
             this.current = this.current.parent;
 
-            return matcher.replaceFirst("");
+            return null;
         }
         matcher = Parser.Quote.matcher(str);
         if(matcher.find()){
             Structure struct = new Quote();
             this.current = this.current.appendChild(struct);
 
-            return matcher.replaceFirst("");
+            return matcher.replaceFirst("") + "\n";
         }
         matcher = Parser.Math.matcher(str);
         if(matcher.find()){
+            if(this.current.self instanceof MathMode){
+                this.current = this.current.parent;
+                return null;
+            }
             int len = matcher.end()-1;
             Structure struct = new MathMode(len);
             this.current = this.current.appendChild(struct);
@@ -92,7 +97,7 @@ public class Parser{
     }
 
     private static Pattern Title = Pattern.compile("^#{1,6}\\ ");
-    private static Pattern Math = Pattern.compile("^\\${1,3}\\ ");
+    private static Pattern Math = Pattern.compile("^\\${1,3}\\ *$");
     private static Pattern Quote = Pattern.compile("^>");
-    private static Pattern Space = Pattern.compile("^\\ *\n");
+    private static Pattern Space = Pattern.compile("^\\ *$");
 }
