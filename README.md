@@ -18,7 +18,7 @@ is converted to
 
 ```tex:output.tex
 
-\seciton{hello!}
+\section{hello!}
 
 \begin{quote}
 Hirkoki
@@ -70,7 +70,7 @@ $ java -jar md4tex.jar path/to/yourfile
 ### Image
 | md                    | tex                                                                                                       |
 |-----------------------|-----------------------------------------------------------------------------------------------------------|
-| \[great!](img/src.jpg) | \begin{figure}[H]   \centering   \includegraphics[width=8cm]{img/src.jpg}   \caption{great!} \end{figure} |
+| \![great](img/src.jpg_lab) | \begin{figure}[H]   \centering   \includegraphics[width=8cm]{img/src.jpg}   \caption{great!} \label{lab} \end{figure} |
 
 ### Table 
 
