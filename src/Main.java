@@ -7,7 +7,7 @@ public class Main{
         Parser parser = new Parser();
         ToLatex converter = new ToLatex(parser.root);
 
-        String file = converter.readFile("sample/layout.tex");
+        String file = converter.readFile(args[0]);
         parser.parse(file);
 
         converter.dumper();
