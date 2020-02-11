@@ -70,7 +70,7 @@ $ java -jar md4tex.jar path/to/yourfile
 ### Image
 | md                    | tex                                                                                                       |
 |-----------------------|-----------------------------------------------------------------------------------------------------------|
-| \![great](img/src.jpg_lab) | \begin{figure}[H]   \centering   \includegraphics[width=8cm]{img/src.jpg}   \caption{great!} \label{lab} \end{figure} |
+| \!\[great](img/src.jpg_lab) | \begin{figure}[H]   \centering   \includegraphics[width=8cm]{img/src.jpg}   \caption{great!} \label{lab} \end{figure} |
 
 ### Table 
 
