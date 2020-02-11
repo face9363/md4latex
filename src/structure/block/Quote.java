@@ -14,6 +14,6 @@ public class Quote extends Block{
 
     @Override
     public String nextDump(){
-        return "\n\\end{quote}\n";
+        return "\\end{quote}\n";
     }
 }

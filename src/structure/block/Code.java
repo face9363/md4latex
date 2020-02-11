@@ -10,11 +10,11 @@ public class Code extends Block {
 
     @Override
     public String prevDump(){
-        return "\n\\begin{lstlisting}[caption=,label="+(new Random()).nextInt(9999)+"]\n";
+        return "\n\\begin{lstlisting}[caption=,label="+(new Random()).nextInt(9999)+"]";
     }
 
     @Override
     public String nextDump(){
-        return "\n\\end{lstlisting}\n";
+        return "\\end{lstlisting}\n";
     }
 }

@@ -71,7 +71,7 @@ public class Parser{
                 this.current.appendChild(new Paragraph(str + "\n"));
             }
         }
-        this.current.appendChild(new Paragraph(str.substring(prevEnd)+"\n"));
+        if(str.substring(prevEnd)!="") this.current.appendChild(new Paragraph(str.substring(prevEnd)+"\n"));
     }
 
     private String topReader(String str){
@@ -108,7 +108,8 @@ public class Parser{
             int len = matcher.end();
             Block struct = new MathMode(len);
             this.current = this.current.appendChild(struct);
-            return matcher.replaceFirst("");
+            String result = matcher.replaceFirst("");
+            return result=="" ? null : result;
         }
         matcher = Parser.Code.matcher(str);
         if(matcher.find()){

@@ -13,7 +13,7 @@ public class Title extends Block{
     public String prevDump(){
         String str = "";
         if(this.mode == 1){
-            str = "seciton";
+            str = "section";
         }
         else if(this.mode == 2){
             str = "subsection";

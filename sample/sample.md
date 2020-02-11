@@ -3,14 +3,14 @@
 >Hirkoki
 Niceto Meet you!
 
-$$$
-get element
-$$$
+$$
+F(x)
+$$
 
 ```
 function goodbye(){
     console.log("goodbye!)
 }
 ```
+![cap](img/graph1.png)
 
-![cap](sample/md)
