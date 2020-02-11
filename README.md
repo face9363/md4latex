@@ -31,7 +31,7 @@ f(x) = x^2
 
 ```
 
-## install(How to use)
+## compile(How to use)
 ```
 $ javac -sourcepath ./ -d classes src/Main.java
 $ jar cvfm md4tex.jar MATE-INFO/MANIFEST.MF -C classes .

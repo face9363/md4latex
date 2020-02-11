@@ -12,3 +12,5 @@ function goodbye(){
     console.log("goodbye!)
 }
 ```
+
+![cap](sample/md)

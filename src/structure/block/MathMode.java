@@ -15,10 +15,10 @@ public class MathMode extends Block{
             str = "$";
         }
         else if(this.mode == 2){
-            str = "\n$$\n";
+            str = "\n\\begin{gather}\n";
         }
         else if(this.mode == 3){
-            str = "\n\\begin{multiline}\n";
+            str = "\n\\begin{align}\n";
         }
         return str;
     }
@@ -30,10 +30,10 @@ public class MathMode extends Block{
             str = "$";
         }
         else if(this.mode == 2){
-            str = "\n$$\n";
+            str = "\n\\end{gather}\n";
         }
         else if(this.mode == 3){
-            str = "\n\\end{multiline}\n";
+            str = "\n\\end{align}\n";
         }
         return str;
     }

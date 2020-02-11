@@ -13,6 +13,7 @@ import java.nio.file.Files;
 import java.nio.charset.StandardCharsets;
 import java.io.IOException;
 import src.structure.block.*;
+import src.structure.inline.Image;
 
 public class Parser{
     public ArrayList<Branch> stack = new ArrayList<>();
@@ -23,6 +24,12 @@ public class Parser{
     public Parser(){
         this.root = new Branch(new Document(), null);
         this.current = this.root;
+    }
+
+    public StringBuilder dumpTex(){
+        StringBuilder val = new StringBuilder();
+        this.root.explore(val);
+        return val;
     }
 
     public void parse(String filepath) {
@@ -39,23 +46,32 @@ public class Parser{
             e.printStackTrace();
             System.out.println("## failed to aquire stream.");
         }
-        System.out.println("############"); 
     }
 
     private void readOneLine(String str) {
-        // StringBuilder prev = new StringBuilder();
         str = this.topReader(str);
         if(! (str == null)){
-            this.current.appendChild(new Paragraph(str + "\n"));
+            inlineReader(str);
         }
-        // str.chars()
-        //     .mapToObj(i -> (char)i)
-        //     .forEach((ch) -> {
-        //         switch(ch){
-        //             case '#':
-        //                 prev.append(ch);
-        //         }
-        //     });
+    }
+
+    private void inlineReader(String str){
+        Matcher matcher = Parser.INLINE.matcher(str);
+        int prevEnd = 0;
+        while(matcher.find()){
+            int start = matcher.start();
+            this.current.appendChild(new Paragraph(str.substring(prevEnd, start)+"\n"));
+
+            prevEnd = matcher.end();
+            String inlinePart = matcher.group();
+            if(IMAGE.matcher(inlinePart).find()){
+                this.current.appendChild(Image.parse(inlinePart));
+            }
+            else{
+                this.current.appendChild(new Paragraph(str + "\n"));
+            }
+        }
+        this.current.appendChild(new Paragraph(str.substring(prevEnd)+"\n"));
     }
 
     private String topReader(String str){
@@ -112,4 +128,8 @@ public class Parser{
     private static Pattern Quote = Pattern.compile("^>");
     private static Pattern Space = Pattern.compile("^\\ *$");
     private static Pattern Code = Pattern.compile("^```\\ *$");
+
+    private static String S_IMAGE = "!\\[.*\\]\\(.*\\)";
+    private static Pattern IMAGE = Pattern.compile(S_IMAGE);
+    private static Pattern INLINE = Pattern.compile(S_IMAGE);
 }

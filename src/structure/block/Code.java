@@ -1,6 +1,8 @@
 package src.structure.block;
 
-public class Code extends Block{
+import java.util.Random;
+
+public class Code extends Block {
 
     public Code(){
         super();
@@ -8,7 +10,7 @@ public class Code extends Block{
 
     @Override
     public String prevDump(){
-        return "\n\\begin{lstlisting}[caption=define,label=fuga7]\n";
+        return "\n\\begin{lstlisting}[caption=,label="+(new Random()).nextInt(9999)+"]\n";
     }
 
     @Override
