@@ -31,7 +31,13 @@ f(x) = x^2
 
 ```
 
-## compile(How to use)
+## quick use
+```
+$ wget https://github.com/face9363/md4latex/releases/download/0.1/md4tex.jar
+$ ./md4tex.jar path/to/yourfile
+```
+
+## compile from source
 ```
 $ javac -sourcepath ./ -d classes src/Main.java
 $ jar cvfm md4tex.jar MATE-INFO/MANIFEST.MF -C classes .
