@@ -34,6 +34,7 @@ f(x) = x^2
 ## quick use
 ```
 $ wget https://github.com/face9363/md4latex/releases/download/0.1/md4tex.jar
+$ chmod 777 md4tex.jar
 $ ./md4tex.jar path/to/yourfile
 ```
 
