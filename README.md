@@ -2,6 +2,9 @@
 
 **convert extended markdown syntax to compilable latex file.**
 
+<img src="https://static.face9363.net/static/img/icons/md4latex.svg" alt="logo" width="200"/>
+
+see example:
 ```tex:input.tex
 
 # hello!
